@@ -79,7 +79,7 @@ namespace PasteBuddy
         public string readButtonPress(int button)
         {
             // send command so that device will return strings associated with buttons
-            //string command = "BUTTON ? " + button.ToString;
+            string command = "BUTTON:P? " + button.ToString();
             serialWrite(command);
             return serialRead();
 
@@ -88,14 +88,23 @@ namespace PasteBuddy
         public string readButtonRelease(int button)
         {
             // send command so that device will return strings associated with buttons
+            string command = "BUTTON:R? " + button.ToString();
+            serialWrite(command);
             return serialRead();
         }
 
-
-        public void applyChanges()
+        public void writeButtonPress(int button, string str)
         {
-            // send all new button commands over serial
-            // should probably check which ones have been changed and only send those ones.
+            // send command so that device will return strings associated with buttons
+            string command = "BUTTON:P:" + button.ToString() + " " + str;
+            serialWrite(command);
+        }
+
+        public void writeButtonRelease(int button, string str)
+        {
+            // send command so that device will return strings associated with buttons
+            string command = "BUTTON:R:" + button.ToString() + " " + str;
+            serialWrite(command);
         }
     }
 }
