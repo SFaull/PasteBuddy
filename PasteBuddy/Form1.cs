@@ -130,5 +130,10 @@ namespace PasteBuddy
         {
             populateFields();
         }
+
+        private void cmbSerialPorts_MouseClick(object sender, MouseEventArgs e)
+        {
+            cmbSerialPorts.DataSource = Arduino.getComPorts();
+        }
     }
 }

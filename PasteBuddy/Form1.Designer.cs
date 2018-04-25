@@ -81,6 +81,7 @@
             this.cmbSerialPorts.Name = "cmbSerialPorts";
             this.cmbSerialPorts.Size = new System.Drawing.Size(121, 21);
             this.cmbSerialPorts.TabIndex = 0;
+            this.cmbSerialPorts.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbSerialPorts_MouseClick);
             // 
             // boxButton1
             // 
