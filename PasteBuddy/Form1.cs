@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace PasteBuddy
 {
@@ -60,6 +61,7 @@ namespace PasteBuddy
                     btnConnect.Enabled = false;
                     panelButton.Visible = true;    // hide button options initially
                     labelConnectionStatus.Text = "Status: Connected";
+                    Thread.Sleep(500);
                     populateFields();
                 }
             }
@@ -77,16 +79,16 @@ namespace PasteBuddy
         private void applyChanges()
         {
             int index = 0;
-            foreach (TextBox textbox in textboxButtonPressList)
+            foreach (TextBox textboxPress in textboxButtonPressList)
             {
-                Arduino.writeButtonPress(index, textbox.Text);
+                Arduino.writeButtonPress(index, textboxPress.Text);
                 index++;
             }
 
             index = 0;
-            foreach (TextBox textbox in textboxButtonReleaseList)
+            foreach (TextBox textboxRelease in textboxButtonReleaseList)
             {
-                Arduino.writeButtonRelease(index, textbox.Text);
+                Arduino.writeButtonRelease(index, textboxRelease.Text);
                 index++;
             }
         }
@@ -94,18 +96,23 @@ namespace PasteBuddy
         private void populateFields()
         {
             int index = 0;
-            foreach(TextBox textbox in textboxButtonPressList)
+            foreach(TextBox textboxPress in textboxButtonPressList)
             {
-                textbox.Text = Arduino.readButtonPress(index);
+                textboxPress.Text = Arduino.readButtonPress(index);
                 index++;
             }
 
             index = 0;
-            foreach (TextBox textbox in textboxButtonReleaseList)
+            foreach (TextBox textboxRelease in textboxButtonReleaseList)
             {
-                textbox.Text = Arduino.readButtonRelease(index);
+                textboxRelease.Text = Arduino.readButtonRelease(index);
                 index++;
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            populateFields();
         }
     }
 }

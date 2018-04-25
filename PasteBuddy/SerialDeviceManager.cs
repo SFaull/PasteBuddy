@@ -4,12 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
+using System.Threading;
 
 namespace PasteBuddy
 {
     class SerialDeviceManager
     {
         SerialPort port;
+
+        public SerialDeviceManager()
+        {
+
+        }
+
+        ~SerialDeviceManager()
+        {
+            port.Close();
+        }
 
         public void Connect(string portName)
         {
@@ -23,8 +34,8 @@ namespace PasteBuddy
                     port.StopBits = StopBits.One;
                     port.Parity = Parity.None;
                     port.Handshake = Handshake.None;
-                    port.ReadTimeout = 1000;
-                    port.WriteTimeout = 1000;
+                    port.ReadTimeout = 5000;
+                    port.WriteTimeout = 5000;
                     port.Open();
                 }
             }
@@ -67,7 +78,9 @@ namespace PasteBuddy
             {
                 try
                 {
-                    port.WriteLine(str);
+                    port.DiscardOutBuffer();
+                    port.DiscardInBuffer();
+                    port.WriteLine(str + Environment.NewLine);
                 }
                 catch   // timeout
                 {
@@ -81,7 +94,9 @@ namespace PasteBuddy
             // send command so that device will return strings associated with buttons
             string command = "BUTTON:P? " + button.ToString();
             serialWrite(command);
-            return serialRead();
+            Thread.Sleep(200);
+            string reply = serialRead();
+            return reply;
 
         }
 
@@ -90,20 +105,24 @@ namespace PasteBuddy
             // send command so that device will return strings associated with buttons
             string command = "BUTTON:R? " + button.ToString();
             serialWrite(command);
-            return serialRead();
+            Thread.Sleep(200);
+            string reply = serialRead();
+            return reply;
         }
 
         public void writeButtonPress(int button, string str)
         {
             // send command so that device will return strings associated with buttons
-            string command = "BUTTON:P:" + button.ToString() + " " + str;
+            string command = "BUTTON:SET:P " + button.ToString() + " " + str;
+            Thread.Sleep(200);
             serialWrite(command);
         }
 
         public void writeButtonRelease(int button, string str)
         {
             // send command so that device will return strings associated with buttons
-            string command = "BUTTON:R:" + button.ToString() + " " + str;
+            string command = "BUTTON:SET:R " + button.ToString() + " " + str;
+            Thread.Sleep(200);
             serialWrite(command);
         }
     }

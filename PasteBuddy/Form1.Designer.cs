@@ -44,6 +44,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtButtonRelease3 = new System.Windows.Forms.TextBox();
             this.txtButtonPress3 = new System.Windows.Forms.TextBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.boxConnection.SuspendLayout();
             this.boxButton1.SuspendLayout();
             this.panelButton.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             // panelButton
             // 
+            this.panelButton.Controls.Add(this.btnRefresh);
             this.panelButton.Controls.Add(this.groupBox2);
             this.panelButton.Controls.Add(this.groupBox1);
             this.panelButton.Controls.Add(this.boxButton1);
@@ -193,6 +195,16 @@
             this.txtButtonPress3.Size = new System.Drawing.Size(308, 20);
             this.txtButtonPress3.TabIndex = 0;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(514, 222);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,6 +250,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtButtonRelease2;
         private System.Windows.Forms.TextBox txtButtonPress2;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 
