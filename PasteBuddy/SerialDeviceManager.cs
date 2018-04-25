@@ -22,8 +22,9 @@ namespace PasteBuddy
             port.Close();
         }
 
-        public void Connect(string portName)
+        public bool Connect(string portName)
         {
+            bool success = false;
             if (!isConnected())
             {
                 port = new SerialPort(portName);
@@ -37,8 +38,22 @@ namespace PasteBuddy
                     port.ReadTimeout = 5000;
                     port.WriteTimeout = 5000;
                     port.Open();
+                    Thread.Sleep(500);  // wait a little bit for device to become responsive
+
+                    success = isPasteBuddy();
+
+                    if (!success)
+                    {
+                        port.Close();
+                    }
                 }
             }
+            return success;
+        }
+
+        public void Disconnect()
+        {
+            port.Close();
         }
 
         public string[] getComPorts()
@@ -53,6 +68,13 @@ namespace PasteBuddy
             return false;
         }
 
+        private bool isPasteBuddy()
+        {
+            serialWrite("*IDN?");
+            string result = serialRead();
+            return result.Equals("PasteBuddy");
+        }
+
         private string serialRead()
         {
             String str = "";
@@ -62,6 +84,7 @@ namespace PasteBuddy
                 try
                 {
                     str = port.ReadLine();
+                    str = str.TrimEnd('\r', '\n');
                 }
                 catch   // timeout
                 {
@@ -80,7 +103,7 @@ namespace PasteBuddy
                 {
                     port.DiscardOutBuffer();
                     port.DiscardInBuffer();
-                    port.WriteLine(str + Environment.NewLine);
+                    port.WriteLine(str + '\r' +  Environment.NewLine);
                 }
                 catch   // timeout
                 {
@@ -92,9 +115,8 @@ namespace PasteBuddy
         public string readButtonPress(int button)
         {
             // send command so that device will return strings associated with buttons
-            string command = "BUTTON:P? " + button.ToString();
+            string command = "PRESS? " + button.ToString();
             serialWrite(command);
-            Thread.Sleep(200);
             string reply = serialRead();
             return reply;
 
@@ -103,9 +125,8 @@ namespace PasteBuddy
         public string readButtonRelease(int button)
         {
             // send command so that device will return strings associated with buttons
-            string command = "BUTTON:R? " + button.ToString();
+            string command = "RELEASE? " + button.ToString();
             serialWrite(command);
-            Thread.Sleep(200);
             string reply = serialRead();
             return reply;
         }
@@ -113,17 +134,17 @@ namespace PasteBuddy
         public void writeButtonPress(int button, string str)
         {
             // send command so that device will return strings associated with buttons
-            string command = "BUTTON:SET:P " + button.ToString() + " " + str;
-            Thread.Sleep(200);
+            string command = "SET:PRESS " + button.ToString() + " " + str;
             serialWrite(command);
+            string result = serialRead();   // this will be "OK" if success, "ERR" if fail
         }
 
         public void writeButtonRelease(int button, string str)
         {
             // send command so that device will return strings associated with buttons
-            string command = "BUTTON:SET:R " + button.ToString() + " " + str;
-            Thread.Sleep(200);
+            string command = "SET:RELEASE " + button.ToString() + " " + str;
             serialWrite(command);
+            string result = serialRead();   // this will be "OK" if success, "ERR" if fail
         }
     }
 }

@@ -52,28 +52,44 @@ namespace PasteBuddy
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (cmbSerialPorts.SelectedIndex > -1)
+            labelConnectionStatus.Text = "Status:";
+            if (btnConnect.Text == "Connect")
             {
-               // MessageBox.Show(String.Format("You selected port '{0}'", cmbSerialPorts.SelectedItem));
-                Arduino.Connect(cmbSerialPorts.SelectedItem.ToString());
-                if (Arduino.isConnected())    // on successful connection
+                if (cmbSerialPorts.SelectedIndex > -1)
                 {
-                    btnConnect.Enabled = false;
-                    panelButton.Visible = true;    // hide button options initially
-                    labelConnectionStatus.Text = "Status: Connected";
-                    Thread.Sleep(500);
-                    populateFields();
+                    // MessageBox.Show(String.Format("You selected port '{0}'", cmbSerialPorts.SelectedItem));
+                    bool success = Arduino.Connect(cmbSerialPorts.SelectedItem.ToString());
+                    if (Arduino.isConnected() && success)    // on successful connection
+                    {
+                        btnConnect.Text = "Disconnect";
+                        panelButton.Visible = true;    // hide button options initially
+                        labelConnectionStatus.Text = "Status: Connected";
+                        Thread.Sleep(500);
+                        populateFields();
+                    }
+                    else
+                    {
+                        labelConnectionStatus.Text = "Status: [ERROR] No response from device. Try a different COM port";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a port first");
                 }
             }
             else
             {
-                MessageBox.Show("Please select a port first");
+                btnConnect.Text = "Connect";
+                panelButton.Visible = false;    // hide button options initially
+                labelConnectionStatus.Text = "Status: Not Connected";
+                Arduino.Disconnect();
             }
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            applyChanges();
+            applyChanges(); // send changes to device
+            populateFields();   // read back device memory into field
         }
 
         private void applyChanges()

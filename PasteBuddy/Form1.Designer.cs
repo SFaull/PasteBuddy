@@ -36,21 +36,21 @@
             this.txtButtonPress1 = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.panelButton = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.labelConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtButtonRelease2 = new System.Windows.Forms.TextBox();
-            this.txtButtonPress2 = new System.Windows.Forms.TextBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtButtonRelease3 = new System.Windows.Forms.TextBox();
             this.txtButtonPress3 = new System.Windows.Forms.TextBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtButtonRelease2 = new System.Windows.Forms.TextBox();
+            this.txtButtonPress2 = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.labelConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.boxConnection.SuspendLayout();
             this.boxButton1.SuspendLayout();
             this.panelButton.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // boxConnection
@@ -124,51 +124,20 @@
             this.panelButton.Controls.Add(this.groupBox1);
             this.panelButton.Controls.Add(this.boxButton1);
             this.panelButton.Controls.Add(this.btnApply);
-            this.panelButton.Location = new System.Drawing.Point(18, 75);
+            this.panelButton.Location = new System.Drawing.Point(18, 86);
             this.panelButton.Name = "panelButton";
             this.panelButton.Size = new System.Drawing.Size(679, 248);
             this.panelButton.TabIndex = 3;
             // 
-            // statusStrip1
+            // btnRefresh
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.labelConnectionStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 342);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(709, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // labelConnectionStatus
-            // 
-            this.labelConnectionStatus.Name = "labelConnectionStatus";
-            this.labelConnectionStatus.Size = new System.Drawing.Size(129, 17);
-            this.labelConnectionStatus.Text = "Status: Not Connected ";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtButtonRelease2);
-            this.groupBox1.Controls.Add(this.txtButtonPress2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 63);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(670, 54);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Button 2";
-            // 
-            // txtButtonRelease2
-            // 
-            this.txtButtonRelease2.Location = new System.Drawing.Point(356, 19);
-            this.txtButtonRelease2.Name = "txtButtonRelease2";
-            this.txtButtonRelease2.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonRelease2.TabIndex = 1;
-            // 
-            // txtButtonPress2
-            // 
-            this.txtButtonPress2.Location = new System.Drawing.Point(7, 19);
-            this.txtButtonPress2.Name = "txtButtonPress2";
-            this.txtButtonPress2.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonPress2.TabIndex = 0;
+            this.btnRefresh.Location = new System.Drawing.Point(514, 222);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // groupBox2
             // 
@@ -195,21 +164,52 @@
             this.txtButtonPress3.Size = new System.Drawing.Size(308, 20);
             this.txtButtonPress3.TabIndex = 0;
             // 
-            // btnRefresh
+            // groupBox1
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(514, 222);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.groupBox1.Controls.Add(this.txtButtonRelease2);
+            this.groupBox1.Controls.Add(this.txtButtonPress2);
+            this.groupBox1.Location = new System.Drawing.Point(6, 63);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(670, 54);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Button 2";
+            // 
+            // txtButtonRelease2
+            // 
+            this.txtButtonRelease2.Location = new System.Drawing.Point(356, 19);
+            this.txtButtonRelease2.Name = "txtButtonRelease2";
+            this.txtButtonRelease2.Size = new System.Drawing.Size(308, 20);
+            this.txtButtonRelease2.TabIndex = 1;
+            // 
+            // txtButtonPress2
+            // 
+            this.txtButtonPress2.Location = new System.Drawing.Point(7, 19);
+            this.txtButtonPress2.Name = "txtButtonPress2";
+            this.txtButtonPress2.Size = new System.Drawing.Size(308, 20);
+            this.txtButtonPress2.TabIndex = 0;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.labelConnectionStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(709, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // labelConnectionStatus
+            // 
+            this.labelConnectionStatus.Name = "labelConnectionStatus";
+            this.labelConnectionStatus.Size = new System.Drawing.Size(129, 17);
+            this.labelConnectionStatus.Text = "Status: Not Connected ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 364);
+            this.ClientSize = new System.Drawing.Size(709, 470);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelButton);
             this.Controls.Add(this.boxConnection);
@@ -221,12 +221,12 @@
             this.boxButton1.ResumeLayout(false);
             this.boxButton1.PerformLayout();
             this.panelButton.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
