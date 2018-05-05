@@ -35,6 +35,7 @@ namespace PasteBuddy
                     port.StopBits = StopBits.One;
                     port.Parity = Parity.None;
                     port.Handshake = Handshake.None;
+                    port.DtrEnable = true;
                     port.ReadTimeout = 5000;
                     port.WriteTimeout = 5000;
                     port.Open();
@@ -103,7 +104,7 @@ namespace PasteBuddy
                 {
                     port.DiscardOutBuffer();
                     port.DiscardInBuffer();
-                    port.WriteLine(str + '\r' +  Environment.NewLine);
+                    port.WriteLine(str);
                 }
                 catch   // timeout
                 {
