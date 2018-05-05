@@ -58,6 +58,7 @@ void setup() {
 
   // Setup callbacks for SerialCommand commands
   sCmd.addCommand("*IDN?", info);
+  sCmd.addCommand("BUTTONS?", query_button_count);
   sCmd.addCommand("PRESS?", query_press);
   sCmd.addCommand("RELEASE?", query_release);
   sCmd.addCommand("SET:PRESS", set_press);
@@ -125,6 +126,10 @@ void buttonReleased(int button)
 void info()
 {
 	Serial.println("PasteBuddy"); // return name
+}
+
+void query_button_count() {
+  Serial.println(BUTTON_COUNT);
 }
 
 void query_press() {
