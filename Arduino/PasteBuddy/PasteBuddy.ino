@@ -173,7 +173,6 @@ void set_press()
 	arg = sCmd.next();    // Get the next argument from the SerialCommand object buffer
 	if (arg != NULL)
 	{    // As long as it existed, take it
-		buttonPress[button] = arg;	// save 
 		eepromWriteString(arg, button, kPress);	// write to EEPROM
 		Serial.println("OK");
 	}
@@ -200,7 +199,6 @@ void set_release()
 	arg = sCmd.next();    // Get the next argument from the SerialCommand object buffer
 	if (arg != NULL)
 	{    // As long as it existed, take it
-		buttonRelease[button] = arg;	// save 
 		eepromWriteString(arg, button, kRelease);	// write to EEPROM
 		Serial.println("OK");
 	}
@@ -245,12 +243,19 @@ bool eepromWriteString(String str, unsigned int button, buttonEvent_t event)
 			address = EEPROM_RELEASE_INDEX(button);
 		else
 			return false;
+
+    str.replace("|"," "); // message will be sent without spaces, so put them back in
 		
 		for (int i = 0; i < str.length(); i++) 
     {
 			EEPROM.write(address + i, str[i]);	// This stores the 'i'th character of your string as a byte on the 'i'th address of the EEPROM 
     }
     EEPROM.write(address + str.length(), '\0');  // Add a string terminator
+
+    if (event == kPress)
+      buttonPress[button] = str;
+    else if (event == kRelease)
+      buttonRelease[button] = str;
 
 		return true;
 	}

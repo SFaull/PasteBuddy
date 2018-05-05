@@ -98,6 +98,7 @@ namespace PasteBuddy
 
         private void serialWrite(string str)
         {
+            str = str + "\r";   // add a CR
             if (isConnected())
             {
                 try
@@ -134,6 +135,7 @@ namespace PasteBuddy
 
         public void writeButtonPress(int button, string str)
         {
+            str = str.Replace(' ', '|');    // send the string without spaces
             // send command so that device will return strings associated with buttons
             string command = "SET:PRESS " + button.ToString() + " " + str;
             serialWrite(command);
@@ -142,6 +144,7 @@ namespace PasteBuddy
 
         public void writeButtonRelease(int button, string str)
         {
+            str = str.Replace(' ', '|');    // send the string without spaces
             // send command so that device will return strings associated with buttons
             string command = "SET:RELEASE " + button.ToString() + " " + str;
             serialWrite(command);
