@@ -309,6 +309,7 @@ void eeprom_erase(void)
     else
       EEPROM.write(i, 0xFF);
   }
+  eeprom_read();  // update the cached strings
   Serial.println("OK");
 }
 

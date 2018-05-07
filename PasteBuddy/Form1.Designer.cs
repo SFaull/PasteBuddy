@@ -34,6 +34,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelButton = new System.Windows.Forms.GroupBox();
+            this.btnErase = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.fpanelButtonPress = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnErase = new System.Windows.Forms.Button();
             this.boxConnection.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelButton.SuspendLayout();
@@ -112,6 +112,16 @@
             this.panelButton.TabStop = false;
             this.panelButton.Visible = false;
             // 
+            // btnErase
+            // 
+            this.btnErase.Location = new System.Drawing.Point(10, 510);
+            this.btnErase.Name = "btnErase";
+            this.btnErase.Size = new System.Drawing.Size(75, 23);
+            this.btnErase.TabIndex = 17;
+            this.btnErase.Text = "Erase";
+            this.btnErase.UseVisualStyleBackColor = true;
+            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -164,6 +174,7 @@
             this.btnApply.TabIndex = 10;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnRefresh
             // 
@@ -173,6 +184,7 @@
             this.btnRefresh.TabIndex = 11;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // fpanelButtonPress
             // 
@@ -180,16 +192,6 @@
             this.fpanelButtonPress.Name = "fpanelButtonPress";
             this.fpanelButtonPress.Size = new System.Drawing.Size(345, 439);
             this.fpanelButtonPress.TabIndex = 12;
-            // 
-            // btnErase
-            // 
-            this.btnErase.Location = new System.Drawing.Point(10, 510);
-            this.btnErase.Name = "btnErase";
-            this.btnErase.Size = new System.Drawing.Size(75, 23);
-            this.btnErase.TabIndex = 17;
-            this.btnErase.Text = "Erase";
-            this.btnErase.UseVisualStyleBackColor = true;
-            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
             // 
             // Form1
             // 
