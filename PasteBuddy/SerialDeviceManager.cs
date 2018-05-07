@@ -114,6 +114,18 @@ namespace PasteBuddy
             }
         }
 
+
+
+        public int buttonCount()
+        {
+            int button_count = 0;
+            string command = "BUTTONS?";
+            serialWrite(command);
+            string reply = serialRead();
+            Int32.TryParse(reply, out button_count);
+            return button_count;
+        }
+
         public string readButtonPress(int button)
         {
             // send command so that device will return strings associated with buttons

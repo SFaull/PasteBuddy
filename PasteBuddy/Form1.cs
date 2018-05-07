@@ -17,35 +17,14 @@ namespace PasteBuddy
         List<TextBox> textboxButtonPressList = new List<TextBox>();     // store all button press textboxes
         List<TextBox> textboxButtonReleaseList = new List<TextBox>();   // store all button release textboxes
 
-        private const int numberOfButtons = 16;
-
         public Form1()
         {
             InitializeComponent();
-            panelButton.Visible = false;    // hide button options initially
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbSerialPorts.DataSource = Arduino.getComPorts();
-
-            textboxButtonPressList.Add(txtButtonPress1);
-            textboxButtonPressList.Add(txtButtonPress2);
-            textboxButtonPressList.Add(txtButtonPress3);
-            /* 
-             * 
-             * Continue this for all text fields for button presses
-             * 
-             */
-
-            textboxButtonReleaseList.Add(txtButtonRelease1);
-            textboxButtonReleaseList.Add(txtButtonRelease2);
-            textboxButtonReleaseList.Add(txtButtonRelease3);
-            /* 
-             * 
-             * Continue this for all text fields for button presses
-             * 
-             */
         }
 
 
@@ -62,9 +41,10 @@ namespace PasteBuddy
                     if (Arduino.isConnected() && success)    // on successful connection
                     {
                         btnConnect.Text = "Disconnect";
-                        panelButton.Visible = true;    // hide button options initially
                         labelConnectionStatus.Text = "Status: Connected";
                         Thread.Sleep(500);
+                        int buttonCount = Arduino.buttonCount();
+                        generateUI(buttonCount);
                         populateFields();
                     }
                     else
@@ -134,6 +114,43 @@ namespace PasteBuddy
         private void cmbSerialPorts_MouseClick(object sender, MouseEventArgs e)
         {
             cmbSerialPorts.DataSource = Arduino.getComPorts();
+        }
+
+        private void generateUI(int _buttonCount)
+        {
+            panelButton.Visible = true;    // show
+
+            // generate as many UI elements that are required based on the number of buttons on the device
+            for (int i = 0; i < _buttonCount; i++)
+            {
+                /* create textbox for button ID */
+                TextBox textBox = new TextBox();
+                textBox.Tag = i;
+                textBox.Text = i.ToString();
+                textBox.Width = fpanelButtonID.Width - 5;
+                textBox.Enabled = false;
+                fpanelButtonID.Controls.Add(textBox);
+            }
+
+            for (int i = 0; i < _buttonCount; i++)
+            {
+                /* create textbox for button press event */
+                TextBox textbox = new TextBox();
+                textbox.Tag = i;
+                textbox.Width = fpanelButtonPress.Width - 10;
+                textboxButtonPressList.Add(textbox);
+                fpanelButtonPress.Controls.Add(textbox);
+            }
+
+            for (int i = 0; i < _buttonCount; i++)
+            {
+                /* create textbox for button release event */
+                TextBox textbox = new TextBox();
+                textbox.Tag = i;
+                textbox.Width = fpanelButtonPress.Width - 10;
+                textboxButtonReleaseList.Add(textbox);
+                fpanelButtonRelease.Controls.Add(textbox);
+            }
         }
     }
 }

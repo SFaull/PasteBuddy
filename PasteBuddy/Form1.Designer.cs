@@ -31,26 +31,20 @@
             this.boxConnection = new System.Windows.Forms.GroupBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.cmbSerialPorts = new System.Windows.Forms.ComboBox();
-            this.boxButton1 = new System.Windows.Forms.GroupBox();
-            this.txtButtonRelease1 = new System.Windows.Forms.TextBox();
-            this.txtButtonPress1 = new System.Windows.Forms.TextBox();
-            this.btnApply = new System.Windows.Forms.Button();
-            this.panelButton = new System.Windows.Forms.Panel();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtButtonRelease3 = new System.Windows.Forms.TextBox();
-            this.txtButtonPress3 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtButtonRelease2 = new System.Windows.Forms.TextBox();
-            this.txtButtonPress2 = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelConnectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panelButton = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fpanelButtonID = new System.Windows.Forms.FlowLayoutPanel();
+            this.fpanelButtonRelease = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.fpanelButtonPress = new System.Windows.Forms.FlowLayoutPanel();
             this.boxConnection.SuspendLayout();
-            this.boxButton1.SuspendLayout();
-            this.panelButton.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panelButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // boxConnection
@@ -83,120 +77,13 @@
             this.cmbSerialPorts.TabIndex = 0;
             this.cmbSerialPorts.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbSerialPorts_MouseClick);
             // 
-            // boxButton1
-            // 
-            this.boxButton1.Controls.Add(this.txtButtonRelease1);
-            this.boxButton1.Controls.Add(this.txtButtonPress1);
-            this.boxButton1.Location = new System.Drawing.Point(6, 3);
-            this.boxButton1.Name = "boxButton1";
-            this.boxButton1.Size = new System.Drawing.Size(670, 54);
-            this.boxButton1.TabIndex = 1;
-            this.boxButton1.TabStop = false;
-            this.boxButton1.Text = "Button 1";
-            // 
-            // txtButtonRelease1
-            // 
-            this.txtButtonRelease1.Location = new System.Drawing.Point(356, 19);
-            this.txtButtonRelease1.Name = "txtButtonRelease1";
-            this.txtButtonRelease1.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonRelease1.TabIndex = 1;
-            // 
-            // txtButtonPress1
-            // 
-            this.txtButtonPress1.Location = new System.Drawing.Point(7, 19);
-            this.txtButtonPress1.Name = "txtButtonPress1";
-            this.txtButtonPress1.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonPress1.TabIndex = 0;
-            // 
-            // btnApply
-            // 
-            this.btnApply.Location = new System.Drawing.Point(595, 222);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(75, 23);
-            this.btnApply.TabIndex = 2;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
-            // 
-            // panelButton
-            // 
-            this.panelButton.Controls.Add(this.btnRefresh);
-            this.panelButton.Controls.Add(this.groupBox2);
-            this.panelButton.Controls.Add(this.groupBox1);
-            this.panelButton.Controls.Add(this.boxButton1);
-            this.panelButton.Controls.Add(this.btnApply);
-            this.panelButton.Location = new System.Drawing.Point(18, 86);
-            this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(679, 248);
-            this.panelButton.TabIndex = 3;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(514, 222);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtButtonRelease3);
-            this.groupBox2.Controls.Add(this.txtButtonPress3);
-            this.groupBox2.Location = new System.Drawing.Point(6, 123);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(670, 54);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Button 3";
-            // 
-            // txtButtonRelease3
-            // 
-            this.txtButtonRelease3.Location = new System.Drawing.Point(356, 19);
-            this.txtButtonRelease3.Name = "txtButtonRelease3";
-            this.txtButtonRelease3.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonRelease3.TabIndex = 1;
-            // 
-            // txtButtonPress3
-            // 
-            this.txtButtonPress3.Location = new System.Drawing.Point(7, 19);
-            this.txtButtonPress3.Name = "txtButtonPress3";
-            this.txtButtonPress3.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonPress3.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtButtonRelease2);
-            this.groupBox1.Controls.Add(this.txtButtonPress2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 63);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(670, 54);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Button 2";
-            // 
-            // txtButtonRelease2
-            // 
-            this.txtButtonRelease2.Location = new System.Drawing.Point(356, 19);
-            this.txtButtonRelease2.Name = "txtButtonRelease2";
-            this.txtButtonRelease2.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonRelease2.TabIndex = 1;
-            // 
-            // txtButtonPress2
-            // 
-            this.txtButtonPress2.Location = new System.Drawing.Point(7, 19);
-            this.txtButtonPress2.Name = "txtButtonPress2";
-            this.txtButtonPress2.Size = new System.Drawing.Size(308, 20);
-            this.txtButtonPress2.TabIndex = 0;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelConnectionStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 629);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(709, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(861, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -206,28 +93,109 @@
             this.labelConnectionStatus.Size = new System.Drawing.Size(129, 17);
             this.labelConnectionStatus.Text = "Status: Not Connected ";
             // 
+            // panelButton
+            // 
+            this.panelButton.Controls.Add(this.label3);
+            this.panelButton.Controls.Add(this.label2);
+            this.panelButton.Controls.Add(this.label1);
+            this.panelButton.Controls.Add(this.fpanelButtonID);
+            this.panelButton.Controls.Add(this.fpanelButtonRelease);
+            this.panelButton.Controls.Add(this.btnApply);
+            this.panelButton.Controls.Add(this.btnRefresh);
+            this.panelButton.Controls.Add(this.fpanelButtonPress);
+            this.panelButton.Location = new System.Drawing.Point(18, 75);
+            this.panelButton.Name = "panelButton";
+            this.panelButton.Size = new System.Drawing.Size(831, 539);
+            this.panelButton.TabIndex = 5;
+            this.panelButton.TabStop = false;
+            this.panelButton.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(599, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Button Release";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(247, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Button Press";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Button ID";
+            // 
+            // fpanelButtonID
+            // 
+            this.fpanelButtonID.Location = new System.Drawing.Point(10, 43);
+            this.fpanelButtonID.Name = "fpanelButtonID";
+            this.fpanelButtonID.Size = new System.Drawing.Size(81, 439);
+            this.fpanelButtonID.TabIndex = 13;
+            // 
+            // fpanelButtonRelease
+            // 
+            this.fpanelButtonRelease.Location = new System.Drawing.Point(462, 43);
+            this.fpanelButtonRelease.Name = "fpanelButtonRelease";
+            this.fpanelButtonRelease.Size = new System.Drawing.Size(345, 439);
+            this.fpanelButtonRelease.TabIndex = 14;
+            // 
+            // btnApply
+            // 
+            this.btnApply.Location = new System.Drawing.Point(732, 506);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.TabIndex = 10;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(651, 506);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 11;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
+            // fpanelButtonPress
+            // 
+            this.fpanelButtonPress.Location = new System.Drawing.Point(105, 43);
+            this.fpanelButtonPress.Name = "fpanelButtonPress";
+            this.fpanelButtonPress.Size = new System.Drawing.Size(345, 439);
+            this.fpanelButtonPress.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 470);
-            this.Controls.Add(this.statusStrip1);
+            this.ClientSize = new System.Drawing.Size(861, 651);
             this.Controls.Add(this.panelButton);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.boxConnection);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Paste Buddy";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.boxConnection.ResumeLayout(false);
-            this.boxButton1.ResumeLayout(false);
-            this.boxButton1.PerformLayout();
-            this.panelButton.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panelButton.ResumeLayout(false);
+            this.panelButton.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,20 +206,17 @@
         private System.Windows.Forms.GroupBox boxConnection;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ComboBox cmbSerialPorts;
-        private System.Windows.Forms.GroupBox boxButton1;
-        private System.Windows.Forms.TextBox txtButtonPress1;
-        private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.Panel panelButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel labelConnectionStatus;
-        private System.Windows.Forms.TextBox txtButtonRelease1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtButtonRelease3;
-        private System.Windows.Forms.TextBox txtButtonPress3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtButtonRelease2;
-        private System.Windows.Forms.TextBox txtButtonPress2;
+        private System.Windows.Forms.GroupBox panelButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel fpanelButtonID;
+        private System.Windows.Forms.FlowLayoutPanel fpanelButtonRelease;
+        private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.FlowLayoutPanel fpanelButtonPress;
     }
 }
 
