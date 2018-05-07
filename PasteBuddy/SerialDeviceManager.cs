@@ -162,5 +162,12 @@ namespace PasteBuddy
             serialWrite(command);
             string result = serialRead();   // this will be "OK" if success, "ERR" if fail
         }
+
+        public void eraseDevice()
+        {
+            string command = "EEPROM:ERASE";
+            serialWrite(command);
+            string result = serialRead();   // this will be "OK" if success, "ERR" if fail
+        }
     }
 }

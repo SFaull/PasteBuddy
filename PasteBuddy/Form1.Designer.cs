@@ -42,6 +42,7 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.fpanelButtonPress = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnErase = new System.Windows.Forms.Button();
             this.boxConnection.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelButton.SuspendLayout();
@@ -95,6 +96,7 @@
             // 
             // panelButton
             // 
+            this.panelButton.Controls.Add(this.btnErase);
             this.panelButton.Controls.Add(this.label3);
             this.panelButton.Controls.Add(this.label2);
             this.panelButton.Controls.Add(this.label1);
@@ -179,6 +181,16 @@
             this.fpanelButtonPress.Size = new System.Drawing.Size(345, 439);
             this.fpanelButtonPress.TabIndex = 12;
             // 
+            // btnErase
+            // 
+            this.btnErase.Location = new System.Drawing.Point(10, 510);
+            this.btnErase.Name = "btnErase";
+            this.btnErase.Size = new System.Drawing.Size(75, 23);
+            this.btnErase.TabIndex = 17;
+            this.btnErase.Text = "Erase";
+            this.btnErase.UseVisualStyleBackColor = true;
+            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,6 +229,7 @@
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.FlowLayoutPanel fpanelButtonPress;
+        private System.Windows.Forms.Button btnErase;
     }
 }
 

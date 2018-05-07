@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Linq;
 
 namespace PasteBuddy
 {
     public partial class Form1 : Form
     {
         SerialDeviceManager Arduino = new SerialDeviceManager();
-        List<TextBox> textboxButtonPressList = new List<TextBox>();     // store all button press textboxes
-        List<TextBox> textboxButtonReleaseList = new List<TextBox>();   // store all button release textboxes
+        List<TextBox> textboxButtonPressList;     // store all button press textboxes
+        List<TextBox> textboxButtonReleaseList;   // store all button release textboxes
 
         public Form1()
         {
@@ -60,9 +61,10 @@ namespace PasteBuddy
             else
             {
                 btnConnect.Text = "Connect";
-                panelButton.Visible = false;    // hide button options initially
                 labelConnectionStatus.Text = "Status: Not Connected";
                 Arduino.Disconnect();
+                // TODO: Deallocate all memory
+                clearUI();
             }
         }
 
@@ -118,7 +120,8 @@ namespace PasteBuddy
 
         private void generateUI(int _buttonCount)
         {
-            panelButton.Visible = true;    // show
+            textboxButtonPressList = new List<TextBox>();     // store all button press textboxes
+            textboxButtonReleaseList = new List<TextBox>();     // store all button release textboxes
 
             // generate as many UI elements that are required based on the number of buttons on the device
             for (int i = 0; i < _buttonCount; i++)
@@ -151,6 +154,58 @@ namespace PasteBuddy
                 textboxButtonReleaseList.Add(textbox);
                 fpanelButtonRelease.Controls.Add(textbox);
             }
+
+            panelButton.Visible = true;    // show
+        }
+
+        private void clearUI()
+        {
+            panelButton.Visible = false;    // hide 
+
+            List<Control> listPressControls = fpanelButtonPress.Controls.Cast<Control>().ToList();
+
+            foreach (Control control in listPressControls)
+            {
+                fpanelButtonPress.Controls.Remove(control);
+                control.Dispose();
+            }
+
+            textboxButtonPressList.Clear();
+            textboxButtonPressList = null;
+            listPressControls.Clear();
+            listPressControls = null;
+
+            List<Control> listReleaseControls = fpanelButtonRelease.Controls.Cast<Control>().ToList();
+
+            foreach (Control control in listReleaseControls)
+            {
+                fpanelButtonRelease.Controls.Remove(control);
+                control.Dispose();
+            }
+
+            textboxButtonReleaseList.Clear();
+            textboxButtonReleaseList = null;
+            listReleaseControls.Clear();
+            listReleaseControls = null;
+
+
+            List<Control> listIDControls = fpanelButtonID.Controls.Cast<Control>().ToList();
+
+            foreach (Control control in listIDControls)
+            {
+                fpanelButtonID.Controls.Remove(control);
+                control.Dispose();
+            }
+
+            listIDControls.Clear();
+            listIDControls = null;
+
+        }
+
+        private void btnErase_Click(object sender, EventArgs e)
+        {
+            Arduino.eraseDevice();
+            populateFields();
         }
     }
 }
