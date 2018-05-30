@@ -204,8 +204,38 @@ namespace PasteBuddy
 
         private void btnErase_Click(object sender, EventArgs e)
         {
-            Arduino.eraseDevice();
-            populateFields();
+            // confirmation dialog
+            DialogResult dr = MessageBox.Show("Erase all device buttons?",
+                      "Erase?", MessageBoxButtons.YesNo);
+
+            // if yes, erase device
+            if (dr == DialogResult.Yes)
+            {
+                ControlsEnabled(false);
+
+                Task eraseTask = Task.Run(() => Arduino.eraseDevice()); // erase device but run as new task
+
+                eraseTask.ContinueWith((t) =>   // on task completion populate the fields
+                {
+                    Invoke((MethodInvoker)delegate  // run on UI thread
+                    {
+                        populateFields();
+                        ControlsEnabled(true);
+                    });
+
+                });
+            }
+        }
+
+        private void ControlsEnabled(bool state)
+        {
+            progressBar.Visible = !state;
+
+            panelButton.Enabled = state;
+            boxConnection.Enabled = state;
+            btnErase.Enabled = state;
+            btnRefresh.Enabled = state;
+            btnApply.Enabled = state;
         }
     }
 }

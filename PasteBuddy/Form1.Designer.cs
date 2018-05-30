@@ -43,6 +43,7 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.fpanelButtonPress = new System.Windows.Forms.FlowLayoutPanel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.boxConnection.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelButton.SuspendLayout();
@@ -82,7 +83,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelConnectionStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 629);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 670);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(861, 22);
             this.statusStrip1.TabIndex = 4;
@@ -96,6 +97,7 @@
             // 
             // panelButton
             // 
+            this.panelButton.Controls.Add(this.progressBar);
             this.panelButton.Controls.Add(this.btnErase);
             this.panelButton.Controls.Add(this.label3);
             this.panelButton.Controls.Add(this.label2);
@@ -107,14 +109,14 @@
             this.panelButton.Controls.Add(this.fpanelButtonPress);
             this.panelButton.Location = new System.Drawing.Point(18, 75);
             this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(831, 539);
+            this.panelButton.Size = new System.Drawing.Size(831, 592);
             this.panelButton.TabIndex = 5;
             this.panelButton.TabStop = false;
             this.panelButton.Visible = false;
             // 
             // btnErase
             // 
-            this.btnErase.Location = new System.Drawing.Point(10, 510);
+            this.btnErase.Location = new System.Drawing.Point(10, 563);
             this.btnErase.Name = "btnErase";
             this.btnErase.Size = new System.Drawing.Size(75, 23);
             this.btnErase.TabIndex = 17;
@@ -168,7 +170,7 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(732, 506);
+            this.btnApply.Location = new System.Drawing.Point(732, 563);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 10;
@@ -178,7 +180,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(651, 506);
+            this.btnRefresh.Location = new System.Drawing.Point(651, 563);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 11;
@@ -193,11 +195,21 @@
             this.fpanelButtonPress.Size = new System.Drawing.Size(345, 439);
             this.fpanelButtonPress.TabIndex = 12;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(91, 563);
+            this.progressBar.MarqueeAnimationSpeed = 10;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(554, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 18;
+            this.progressBar.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 651);
+            this.ClientSize = new System.Drawing.Size(861, 692);
             this.Controls.Add(this.panelButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.boxConnection);
@@ -232,6 +244,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.FlowLayoutPanel fpanelButtonPress;
         private System.Windows.Forms.Button btnErase;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
